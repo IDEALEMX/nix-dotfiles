@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 let
-  fontname = "Arial";
 in
+
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -29,8 +29,9 @@ in
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
+    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
@@ -74,7 +75,10 @@ in
     # EDITOR = "emacs";
   };
 
-  # bash config
+  # make fonts avaliable
+  fonts.fontconfig.enable = true;
+
+  # @bash config
   programs.bash = {
     enable = true;
     shellAliases = {
@@ -87,11 +91,14 @@ in
     '';
   };
 
-  # kitty terminal
+
+  # @kitty terminal
   programs.kitty = {
     enable = true;
-    font.size = 14;
-    font.name = "Hack";
+    font = {
+      size = 14;
+      name = "JetBrainsMonoNF-Regular";
+    };
 
     # prevents bash from overwritting the cursor_shape property
     shellIntegration.enableBashIntegration = false;
