@@ -1,13 +1,17 @@
 { config, pkgs, ... }:
 
 let
+  terminal = "kitty";
+  browser = "firefox";
 in
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
+  # home-manager config
   home.username = "ideale";
   home.homeDirectory = "/home/ideale";
+
+  # make fonts avaliable
+  fonts.fontconfig.enable = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -24,11 +28,6 @@ in
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
 
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     
@@ -75,8 +74,6 @@ in
     # EDITOR = "emacs";
   };
 
-  # make fonts avaliable
-  fonts.fontconfig.enable = true;
 
   # @bash config
   programs.bash = {
@@ -90,7 +87,6 @@ in
       PS1="\[\e[1;32m\][\u@\h]\[\e[1;34m\]\w \n理想\[\e[0m\]| "
     '';
   };
-
 
   # @kitty terminal
   programs.kitty = {
@@ -115,6 +111,61 @@ in
       shell_integration = "no-cursor";
       cursor_shape = "block";
     };
+  };
+
+  # @hyprland
+  wayland.windowManager.hyprland = {
+    enable = true;
+
+    settings = {
+      # set modkey
+      "$mod" = "SUPER";
+      
+      # monitor settings
+      monitor = [ ",highres,auto,1" ];
+
+      exec-once = [ "waybar" ];
+
+      bind = [
+        # program binds
+        "$mod, K, exec, ${terminal}"
+	"$mod, I, exec, ${browser}"
+
+	# functionality binds
+	"$mod, L, killactive"
+	"$mod, Q, exit"
+
+	# workspace binds
+	"$mod, 1, workspace, 1"
+	"$mod, 2, workspace, 2"
+	"$mod, 3, workspace, 3"
+	"$mod, 4, workspace, 4"
+	"$mod, 5, workspace, 5"
+	"$mod, 6, workspace, 6"
+	"$mod, 7, workspace, 7"
+	"$mod, 8, workspace, 8"
+	"$mod, 9, workspace, 9"
+
+	"$mod SHIFT, 1, movetoworkspace, 1"
+	"$mod SHIFT, 2, movetoworkspace, 2"
+	"$mod SHIFT, 3, movetoworkspace, 3"
+	"$mod SHIFT, 4, movetoworkspace, 4"
+	"$mod SHIFT, 5, movetoworkspace, 5"
+	"$mod SHIFT, 6, movetoworkspace, 6"
+	"$mod SHIFT, 7, movetoworkspace, 7"
+	"$mod SHIFT, 8, movetoworkspace, 8"
+	"$mod SHIFT, 9, movetoworkspace, 9"
+      ];
+
+      input = { natural_scroll = true; };
+
+    };
+  };
+
+  # @waybar
+
+  programs.waybar = {
+    enable = true;
   };
 
   # Let Home Manager install and manage itself.
