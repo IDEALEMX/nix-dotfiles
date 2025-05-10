@@ -97,6 +97,9 @@ in
 
 	# internet downloading (important)
 	wget
+
+	# system utilities
+	killall
   ];
 
   # enable flakes
