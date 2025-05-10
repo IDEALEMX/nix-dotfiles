@@ -91,7 +91,7 @@ in
   programs.kitty = {
     enable = true;
     font.size = 14;
-    font.name = "Arial";
+    font.name = "Hack";
 
     # prevents bash from overwritting the cursor_shape property
     shellIntegration.enableBashIntegration = false;
