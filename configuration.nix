@@ -15,18 +15,6 @@ in
 
   # UNCHANGING (NO REAL REASON TO CHANGE THEM)
 
-  # divers
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = false;
-    open = false; # set to true to use open-source driver if supported
-    nvidiaSettings = true; # installs the `nvidia-settings` GUI
-    package = config.boot.kernelPackages.nvidiaPackages.stable; # or latest, beta, etc.
-  };
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -100,6 +88,7 @@ in
 
 	# system utilities
 	killall
+	htop
   ];
 
   # enable flakes

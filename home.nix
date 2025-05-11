@@ -86,6 +86,7 @@ in
     shellAliases = {
       "battery" = "acpi";
       "vi" = "~/.nixvim/result/bin/nvim";
+      "bupdates" = "bash ~/.nix/bupdates.sh";
     };
 
     # prompt
