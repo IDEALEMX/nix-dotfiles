@@ -9,6 +9,7 @@ in
   # home-manager config
   home.username = "ideale";
   home.homeDirectory = "/home/ideale";
+  nixpkgs.config.allowUnfree = true;
 
   # make fonts avaliable
   fonts.fontconfig.enable = true;
@@ -25,6 +26,8 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    
+    pkgs.discord-ptb
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # # pkgs.hello
@@ -74,12 +77,12 @@ in
     # EDITOR = "emacs";
   };
 
-
   # @bash config
   programs.bash = {
     enable = true;
     shellAliases = {
       "battery" = "acpi";
+      "vi" = "~/.nixvim/result/bin/nvim";
     };
 
     # prompt
