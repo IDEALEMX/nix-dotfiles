@@ -23,7 +23,8 @@ case $input in
 		;;
 
 	4)
-		git add ~/.nix/
+    cd ~/.nix/ || return
+		git add .
 		echo "enter commit message"  
 		read -r commit_message
 		git commit -m "$commit_message"
