@@ -1,11 +1,11 @@
 #!/bin/bash
 
 echo "=== NIXOS󱄅 UPDATES ==="
-echo "1 <- configurations"
-echo "2 <- home-manager"
-echo "3 <- flakes"
-echo "4 <- git (everything)";
-echo "5 <- rebuild nixvim";
+echo "1 <-  configurations"
+echo "2 <- 󰋜 home-manager"
+echo "3 <- 󱄅 flakes"
+echo "4 <- 󰊢 git (everything)";
+echo "5 <-  rebuild nixvim";
 echo "===----------------==="
 read -r input
 
