@@ -86,7 +86,7 @@ in
     shellAliases = {
       "battery" = "acpi";
       "vi" = "~/.nixvim/result/bin/nvim";
-      "bupdates" = "bash ~/.nix/bupdates.sh";
+      "u" = "bash ~/.nix/updates.sh";
     };
 
     # prompt
@@ -103,6 +103,8 @@ in
       name = "JetBrainsMonoNF-Regular";
     };
 
+    # theme
+    themeFile = "Catppuccin-Mocha";
     # prevents bash from overwritting the cursor_shape property
     shellIntegration.enableBashIntegration = false;
 	
@@ -164,7 +166,10 @@ in
 	"$mod SHIFT, 9, movetoworkspace, 9"
       ];
 
-      input = { natural_scroll = true; };
+      input = { 
+      touchpad.natural_scroll = true;
+      kb_options = "caps:escape";
+      };
 
     };
   };

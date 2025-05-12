@@ -15,6 +15,20 @@ in
 
   # UNCHANGING (NO REAL REASON TO CHANGE THEM)
 
+  # nvidia drivers
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    open = true;
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = true;
+    prime = {
+      offload.enable = true;
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -43,6 +57,22 @@ in
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # thermal management
+  services.thermald.enable = true;
+
+	/*
+  systemd.services.coolercontrold = {
+    description = "CoolerControl Daemon";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network.target" ];
+    serviceConfig = {
+      ExecStart = "coolercontrol/bin/coolercontrold";
+      Restart = "on-failure";
+    };
+  };
+  */
+
 
   # USERS SETTINGS
 
@@ -89,6 +119,9 @@ in
 	# system utilities
 	killall
 	htop
+	lm_sensors
+	#coolercontrol.coolercontrol-gui
+	#coolercontrol.coolercontrold
   ];
 
   # enable flakes

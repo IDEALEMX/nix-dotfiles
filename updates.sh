@@ -1,10 +1,11 @@
 #!/bin/bash
 
-echo "=== NIXOSλ UPDATES ==="
+echo "=== NIXOS󱄅 UPDATES ==="
 echo "1 <- configurations"
 echo "2 <- home-manager"
 echo "3 <- flakes"
 echo "4 <- git (everything)";
+echo "5 <- rebuild nixvim";
 echo "===----------------==="
 read -r input
 
@@ -27,6 +28,10 @@ case $input in
 		read -r commit_message
 		git commit -m "$commit_message"
 		;;
+
+  5)
+    nix build ~/.nixvim
+    ;;
 
 	*)
 		echo "error, unknown option" "$input"
