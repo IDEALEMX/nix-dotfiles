@@ -27,10 +27,6 @@ in
   # environment.
   home.packages = [
 
-    # for haskell
-    pkgs.haskell.compiler.ghc94
-    pkgs.cabal-install
-    
     # discord
     pkgs.discord-ptb
 
@@ -92,7 +88,7 @@ in
 
     # prompt
     initExtra = ''
-      PS1="\[\e[1;32m\][\u@\h]\[\e[1;34m\]\w \n理想\[\e[0m\]| "
+      PS1="\[\e[1;32m\] \u<-\h\[\e[1;34m\](\w)\n\[\e[1;32m\] 󱞪 \[\e[0m\]"
     '';
   };
 

@@ -120,6 +120,7 @@ in
 	killall
 	htop
 	lm_sensors
+    fanctl
 	#coolercontrol.coolercontrol-gui
 	#coolercontrol.coolercontrold
   ];
