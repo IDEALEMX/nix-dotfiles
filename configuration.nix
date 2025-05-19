@@ -29,6 +29,15 @@ in
     };
   };
 
+  # opengl
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  # steam
+  programs.steam.enable = true;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
